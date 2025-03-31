@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+:root {
+  --container-width: 1440px;
+  --transition-duration: 0.2s;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}/*# sourceMappingURL=styles.css.map */
