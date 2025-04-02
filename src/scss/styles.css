@@ -18,4 +18,66 @@ a {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.item {
+  width: 300px;
+}
+.item__delete-button-wrapper {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: relative;
+}
+.item__delete-button {
+  border: none;
+}
+.item__delete-button::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(315deg);
+}
+.item__delete-button::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.item__liked, .item__not-liked {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+.item__image {
+  width: 200px;
+}
+.item__buttons-wrapper {
+  width: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.true {
+  color: green;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.false {
+  color: red;
+  padding: 0;
+  background-color: transparent;
+  border: none;
 }/*# sourceMappingURL=styles.css.map */
