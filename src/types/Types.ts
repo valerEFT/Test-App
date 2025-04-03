@@ -8,6 +8,7 @@ export type Products = {
   category: string;
   image: string;
   liked: boolean;
+  favorite: boolean;
 };
 
 export type ProductsState = {
