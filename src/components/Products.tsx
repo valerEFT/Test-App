@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, RootState } from "../store/store";
 import {
   setProducts,
@@ -11,6 +11,9 @@ import { useSelector } from "react-redux";
 const Products = () => {
   const products = useSelector((state: RootState) => state.products.products);
   const dispatch = useAppDispatch();
+  const [filter, setFilter] = useState({ all: true, favorite: false });
+  const filteredProducts = products.filter((card) => card.favorite);
+  console.log(filter);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -29,8 +32,16 @@ const Products = () => {
 
   return (
     <section className="products">
+      <div className="products__filter">
+        <button onClick={() => setFilter({ all: true, favorite: false })}>
+          Все
+        </button>
+        <button onClick={() => setFilter({ all: false, favorite: true })}>
+          Избранное
+        </button>
+      </div>
       <ul className="products__list">
-        {products.map((card) => {
+        {(filter.all ? products : filteredProducts).map((card) => {
           const slicedCardDescription = card.description.slice(0, 70);
           return (
             <li className="item" key={card.id}>
