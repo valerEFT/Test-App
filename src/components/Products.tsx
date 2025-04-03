@@ -4,6 +4,7 @@ import {
   setProducts,
   deleteProduct,
   likedProduct,
+  favoriteProduct,
 } from "../feature/slice/ProductSlice";
 import { useSelector } from "react-redux";
 
@@ -54,6 +55,20 @@ const Products = () => {
                       : "/images/white-like.png"
                   }
                   alt={card.liked ? "liked" : "not-liked"}
+                />
+              </button>
+              <button
+                onClick={() => dispatch(favoriteProduct(card.id))}
+                className="item__favorite-button"
+              >
+                <img
+                  className="item__favorite-image"
+                  src={
+                    card.favorite
+                      ? "/images/favorite-active.png"
+                      : "/images/favorite.png"
+                  }
+                  alt="favorite"
                 />
               </button>
             </div>

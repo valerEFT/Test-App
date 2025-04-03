@@ -13,6 +13,7 @@ const ProductSlice = createSlice({
       state.products = action.payload.map((card) => ({
         ...card,
         liked: false,
+        favorite: false,
       }));
     },
     deleteProduct: (state, action: PayloadAction<number>) => {
@@ -28,9 +29,17 @@ const ProductSlice = createSlice({
         likedCard.liked = !likedCard.liked;
       }
     },
+    favoriteProduct: (state, action: PayloadAction<number>) => {
+      const favoritedProduct = state.products.find(
+        (card) => card.id === action.payload
+      );
+      if (favoritedProduct) {
+        favoritedProduct.favorite = !favoritedProduct.favorite;
+      }
+    },
   },
 });
 
-export const { setProducts, deleteProduct, likedProduct } =
+export const { setProducts, deleteProduct, likedProduct, favoriteProduct } =
   ProductSlice.actions;
 export default ProductSlice.reducer;
