@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProductsState, Products } from "../../types/Types";
+import { Product, Products } from "../../types/Types";
 
-const initialState: ProductsState = {
+const initialState: Products = {
   products: [],
 };
 
@@ -9,7 +9,7 @@ const ProductSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setProducts: (state, action: PayloadAction<Products[]>) => {
+    setProducts: (state, action: PayloadAction<Product[]>) => {
       state.products = action.payload.map((card) => ({
         ...card,
         liked: false,

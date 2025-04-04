@@ -1,6 +1,6 @@
 import React from "react";
 
-export type Products = {
+export type Product = {
   id: number;
   title: string;
   price: number;
@@ -9,8 +9,12 @@ export type Products = {
   image: string;
   liked: boolean;
   favorite: boolean;
+  rating: {
+    rate: number;
+    count: number;
+  };
 };
 
-export type ProductsState = {
-  products: Products[];
+export type Products = {
+  products: Product[];
 };
