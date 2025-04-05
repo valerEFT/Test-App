@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { Product } from "../types/Types";
 
 export const SelectedProduct = () => {
@@ -21,6 +21,9 @@ export const SelectedProduct = () => {
   }, []);
   return (
     <section className="selected-product">
+      <Link to={"/products"}>
+        <button className="selected-product__back-button">Back</button>
+      </Link>
       <div className="selected-product__card">
         <img src={card?.image} alt={card?.title} />
         <h2 className="selected-product__title">{card?.title}</h2>
