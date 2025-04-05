@@ -1,34 +1,23 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, RootState } from "../store/store";
 import {
-  setProducts,
   deleteProduct,
   likedProduct,
   favoriteProduct,
 } from "../feature/slice/ProductSlice";
 import { useSelector } from "react-redux";
+import { Link } from "react-router";
+import { fetchProducts } from "../functions/fetchProducts";
 
 const Products = () => {
   const products = useSelector((state: RootState) => state.products.products);
   const dispatch = useAppDispatch();
   const [filter, setFilter] = useState({ all: true, favorite: false });
   const filteredProducts = products.filter((card) => card.favorite);
-  console.log(filter);
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        if (response.ok) {
-          dispatch(setProducts(data));
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchProducts();
-    console.log(products);
-  }, []);
+    fetchProducts(dispatch);
+  }, [dispatch]);
 
   return (
     <section className="products">
@@ -42,15 +31,24 @@ const Products = () => {
       </div>
       <ul className="products__list">
         {(filter.all ? products : filteredProducts).map((card) => {
+          const slicedTitle = card.title.slice(0, 43);
           const slicedCardDescription = card.description.slice(0, 70);
           return (
-            <li className="item" key={card.id}>
-              <h2 className="item__title">{card.title}</h2>
-              <img className="item__image" src={card.image} alt={card.title} />
-              <p className="item__description">
-                {slicedCardDescription + "..."}
-              </p>
-              <span className="item__price">{card.price}</span>
+            <li key={card.id} className="item">
+              <Link to={`/products/${card.id}`}>
+                <img
+                  className="item__image"
+                  src={card.image}
+                  alt={card.title}
+                />
+                <h2 className="item__title">
+                  {card.title.length > 43 ? slicedTitle + "..." : slicedTitle}
+                </h2>
+                <p className="item__description">
+                  {slicedCardDescription + "..."}
+                </p>
+                <span className="item__price">{card.price}$</span>
+              </Link>
               <div className="item__buttons-wrapper">
                 <div className="item__delete-button-wrapper">
                   <button
@@ -90,7 +88,6 @@ const Products = () => {
             </li>
           );
         })}
-        ;
       </ul>
     </section>
   );
