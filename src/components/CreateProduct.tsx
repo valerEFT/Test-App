@@ -68,7 +68,9 @@ const CreateProduct = () => {
 
   return (
     <>
-      <Link to={"/products"}>Products</Link>
+      <Link className="link form__link" to={"/products"}>
+        {"<"} Back to products
+      </Link>
       <form onSubmit={sendObj} className="form">
         <label>
           Title
@@ -94,33 +96,28 @@ const CreateProduct = () => {
           />
         </label>
         <label>
-          category
+          Category
           <input type="text" onChange={inputCategoryValue} required />
         </label>
         <label>
-          imageLink
+          Image Link
           <input type="text" onChange={inputImageLink} required />
         </label>
         <label>
-          rate
-          <input
-            type="number"
-            onChange={inputRateValue}
-            required
-            min={0}
-            max={5}
-          />
+          Rate
+          <input type="number" onChange={inputRateValue} required min={0} />
         </label>
         <label>
-          count
+          Count
           <input
+            className="form__rate"
             type="number"
             onChange={inputCountValue}
             required
             minLength={1}
           />
         </label>
-        <input type="submit" />
+        <input className="form__submit" type="submit" />
       </form>
     </>
   );
