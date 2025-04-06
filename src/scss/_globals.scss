@@ -22,6 +22,9 @@ li {
 .link {
   text-decoration: none;
   color: red;
+  font-size: 25px;
+  width: fit-content;
+  height: 50px;
   &:active {
     color: blue;
   }
