@@ -8,6 +8,10 @@ import {
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import { fetchProducts } from "../functions/fetchProducts";
+import blackLike from "../assets/images/black-like.png";
+import whiteLike from "../assets/images/white-like.png";
+import favoriteActive from "../assets/images/favorite-active.png";
+import favorite from "../assets/images/favorite.png";
 
 const Products = () => {
   const products = useSelector((state: RootState) => state.products.products);
@@ -78,11 +82,7 @@ const Products = () => {
                 >
                   <img
                     className={card.liked ? "item__liked" : "item__not-liked"}
-                    src={
-                      card.liked
-                        ? "/images/black-like.png"
-                        : "/images/white-like.png"
-                    }
+                    src={card.liked ? blackLike : whiteLike}
                     alt={card.liked ? "liked" : "not-liked"}
                   />
                 </button>
@@ -92,11 +92,7 @@ const Products = () => {
                 >
                   <img
                     className="item__favorite-image"
-                    src={
-                      card.favorite
-                        ? "/images/favorite-active.png"
-                        : "/images/favorite.png"
-                    }
+                    src={card.favorite ? favoriteActive : favorite}
                     alt="favorite"
                   />
                 </button>
