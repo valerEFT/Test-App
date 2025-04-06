@@ -1,0 +1,21 @@
+.selected-product {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  &__back-button {
+    @include reset-button;
+    padding: 20px 100px 0px 0px;
+  }
+  &__image {
+    max-width: 400px;
+    width: 100%;
+  }
+  &__card {
+    max-width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
