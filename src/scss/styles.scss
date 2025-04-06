@@ -1,5 +1,4 @@
 @import "./globals";
-@import "./variables";
-@import "./utils";
 @import "./mixin";
-@import "./blocks/products-list", "./blocks/products-page";
+@import "./blocks/products-list-item", "./blocks/create-product",
+  "./blocks/products-filter", "./blocks/selected-product";
