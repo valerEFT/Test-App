@@ -1,0 +1,39 @@
+.products {
+  &__filter {
+    display: flex;
+    justify-content: center;
+  }
+  &__filter-button {
+    width: 50%;
+    height: 30px;
+    @include reset-button;
+  }
+  &__filter-active {
+    background-color: blue;
+    color: #fff;
+  }
+  &__filter-inactive {
+    background-color: #fff;
+    color: #000;
+  }
+  &__list {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__new-product {
+    height: 30px;
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+    color: red;
+    &:active {
+      color: blue;
+    }
+  }
+}
