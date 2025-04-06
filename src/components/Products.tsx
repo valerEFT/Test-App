@@ -22,7 +22,9 @@ const Products = () => {
 
   return (
     <section className="products">
-      <Link to={"/create-product"}>New product</Link>
+      <Link className="products__new-product" to={"/create-product"}>
+        + New product
+      </Link>
       <div className="products__filter">
         <button
           className={
