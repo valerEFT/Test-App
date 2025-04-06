@@ -17,6 +17,8 @@ const CreateProduct = () => {
   const [rate, setRate] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
 
+  const id: number = products[products.length - 1]?.id + 1;
+
   const sendObj = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(addNewProduct(newProduct));
@@ -26,8 +28,6 @@ const CreateProduct = () => {
     if (products.length > 0) return;
     fetchProducts(dispatch);
   }, [dispatch, products]);
-
-  const id: number = products[products.length - 1]?.id + 1;
 
   const inputTitleValue = (e: ChangeEvent<HTMLInputElement>) => {
     e.target.value && setTitle(e.target.value);
@@ -50,6 +50,7 @@ const CreateProduct = () => {
   const inputCountValue = (e: ChangeEvent<HTMLInputElement>) => {
     e.target.value && setCount(Number(e.target.value));
   };
+
   const newProduct: Product = {
     id: id,
     title: title,
@@ -71,7 +72,12 @@ const CreateProduct = () => {
       <form onSubmit={sendObj} className="form">
         <label>
           Title
-          <input type="text" onChange={inputTitleValue} required />
+          <input
+            type="text"
+            onChange={inputTitleValue}
+            required
+            minLength={3}
+          />
         </label>
         <label>
           Price
@@ -79,7 +85,13 @@ const CreateProduct = () => {
         </label>
         <label>
           Description
-          <input type="text" onChange={inputDescriptionValue} required />
+          <input
+            type="text"
+            onChange={inputDescriptionValue}
+            required
+            minLength={20}
+            maxLength={500}
+          />
         </label>
         <label>
           category
@@ -91,11 +103,22 @@ const CreateProduct = () => {
         </label>
         <label>
           rate
-          <input type="number" onChange={inputRateValue} required />
+          <input
+            type="number"
+            onChange={inputRateValue}
+            required
+            min={0}
+            max={5}
+          />
         </label>
         <label>
           count
-          <input type="number" onChange={inputCountValue} required />
+          <input
+            type="number"
+            onChange={inputCountValue}
+            required
+            minLength={1}
+          />
         </label>
         <input type="submit" />
       </form>
