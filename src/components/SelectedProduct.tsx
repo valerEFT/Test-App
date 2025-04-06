@@ -21,11 +21,17 @@ export const SelectedProduct = () => {
   }, []);
   return (
     <section className="selected-product">
-      <Link to={"/products"}>
-        <button className="selected-product__back-button">Back</button>
+      <Link className="link" to={"/products"}>
+        <button className="selected-product__back-button link">
+          {"< "}Back to products
+        </button>
       </Link>
       <div className="selected-product__card">
-        <img src={card?.image} alt={card?.title} />
+        <img
+          className="selected-product__image"
+          src={card?.image}
+          alt={card?.title}
+        />
         <h2 className="selected-product__title">{card?.title}</h2>
         <p className="selected-product__description">{card?.description}</p>
         <span className="selected-product__price">price: {card?.price}$</span>
