@@ -16,11 +16,13 @@ const Products = () => {
   const filteredProducts = products.filter((card) => card.favorite);
 
   useEffect(() => {
+    if (products.length > 0) return;
     fetchProducts(dispatch);
-  }, [dispatch]);
+  }, [products, dispatch]);
 
   return (
     <section className="products">
+      <Link to={"/create-product"}>New product</Link>
       <div className="products__filter">
         <button onClick={() => setFilter({ all: true, favorite: false })}>
           Все
