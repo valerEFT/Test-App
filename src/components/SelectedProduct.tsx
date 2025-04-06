@@ -14,7 +14,7 @@ export const SelectedProduct = () => {
           setCard(data);
         }
       } catch (err) {
-        console.error(err);
+        console.error("Такого товара не существует на fakestoreapi", err);
       }
     };
     getProduct();
