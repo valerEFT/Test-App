@@ -43,8 +43,15 @@
     width: 200px;
   }
   &__buttons-wrapper {
-    width: 50px;
+    width: 150px;
     display: flex;
     justify-content: space-between;
+  }
+  &__favorite-button {
+    @include reset-button;
+  }
+  &__favorite-image {
+    width: 25px;
+    height: 25px;
   }
 }

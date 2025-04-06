@@ -24,13 +24,29 @@ const Products = () => {
     <section className="products">
       <Link to={"/create-product"}>New product</Link>
       <div className="products__filter">
-        <button onClick={() => setFilter({ all: true, favorite: false })}>
+        <button
+          className={
+            filter.all
+              ? "products__filter-active products__filter-button"
+              : "products__filter-inactive products__filter-button"
+          }
+          onClick={() => setFilter({ all: true, favorite: false })}
+        >
           Все
         </button>
-        <button onClick={() => setFilter({ all: false, favorite: true })}>
+
+        <button
+          className={
+            filter.all
+              ? "products__filter-inactive products__filter-button"
+              : "products__filter-active products__filter-button"
+          }
+          onClick={() => setFilter({ all: false, favorite: true })}
+        >
           Избранное
         </button>
       </div>
+
       <ul className="products__list">
         {(filter.all ? products : filteredProducts).map((card) => {
           const slicedTitle = card.title.slice(0, 43);
@@ -43,21 +59,17 @@ const Products = () => {
                   src={card.image}
                   alt={card.title}
                 />
-                <h2 className="item__title">
-                  {card.title.length > 43 ? slicedTitle + "..." : slicedTitle}
-                </h2>
-                <p className="item__description">
-                  {slicedCardDescription + "..."}
-                </p>
-                <span className="item__price">{card.price}$</span>
+                <div className="item__content-wrapper">
+                  <h2 className="item__title">
+                    {card.title.length > 43 ? slicedTitle + "..." : slicedTitle}
+                  </h2>
+                  <p className="item__description">
+                    {slicedCardDescription + "..."}
+                  </p>
+                  <span className="item__price">price: {card.price}$</span>
+                </div>
               </Link>
               <div className="item__buttons-wrapper">
-                <div className="item__delete-button-wrapper">
-                  <button
-                    className="item__delete-button"
-                    onClick={() => dispatch(deleteProduct(card.id))}
-                  ></button>
-                </div>
                 <button
                   className={card.liked ? "item__liked" : "item__not-liked"}
                   onClick={() => dispatch(likedProduct(card.id))}
@@ -86,6 +98,12 @@ const Products = () => {
                     alt="favorite"
                   />
                 </button>
+                <div className="item__delete-button-wrapper">
+                  <button
+                    className="item__delete-button"
+                    onClick={() => dispatch(deleteProduct(card.id))}
+                  ></button>
+                </div>
               </div>
             </li>
           );
