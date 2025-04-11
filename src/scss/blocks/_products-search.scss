@@ -1,0 +1,36 @@
+.products {
+  margin-bottom: 10px;
+  &__search {
+    width: 100%;
+    max-width: 250px;
+    height: 30px;
+    border-radius: 10px;
+  }
+  &__search-list {
+    position: absolute;
+    z-index: 1;
+  }
+  &__search-wrapper {
+    position: relative;
+  }
+  &__search-item {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color: #f3f3f3;
+  }
+  &__search-title {
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+  }
+  &__item-image {
+    width: 50%;
+    height: 80%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+}
