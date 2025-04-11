@@ -12,6 +12,7 @@ import blackLike from "../assets/images/black-like.png";
 import whiteLike from "../assets/images/white-like.png";
 import favoriteActive from "../assets/images/favorite-active.png";
 import favorite from "../assets/images/favorite.png";
+import { SearchProducts } from "./SearchProducts";
 
 const Products = () => {
   const products = useSelector((state: RootState) => state.products.products);
@@ -29,6 +30,7 @@ const Products = () => {
       <Link className="products__new-product" to={"/create-product"}>
         + New product
       </Link>
+      <SearchProducts />
       <div className="products__filter">
         <button
           className={
